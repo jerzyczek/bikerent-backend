@@ -1,0 +1,16 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://127.0.0.1:5432/bikerent?serverTimezone=UTC
+    username: ${POSTGRES_USER:user}
+    password: ${POSTGRES_PASS:user}
+    hikari:
+      maxLifetime: 150000
+  jpa:
+    properties:
+      hibernate:
+        format: true
+  web:
+    locale: en_EN
+    locale-resolver: fixed
+  liquibase:
+    change-log: classpath:db/changelog/db.changelog-master.yaml
