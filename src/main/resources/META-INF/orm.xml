@@ -5,4 +5,28 @@
    http://java.sun.com/xml/ns/persistence/orm_2_2.xsd"
                  version="2.0">
     <description>Persistent mapping</description>
+    <entity class="com.matty.bikerent.domain.Product" access="FIELD">
+        <table name="product"/>
+        <pre-persist method-name="onCreate"/>
+        <attributes>
+            <id name="uuid">
+                <column name="id"/>
+                <sequence-generator name="id_seq"/>
+            </id>
+            <basic name="name">
+                <column nullable="true"/>
+            </basic>
+            <basic name="createdAt">
+                <column nullable="false"/>
+            </basic>
+            <basic name="updatedAt">
+                <column nullable="false"/>
+            </basic>
+            <embedded name="productQuantity">
+                <attribute-override name="value">
+                    <column name="quantity"/>
+                </attribute-override>
+            </embedded>
+        </attributes>
+    </entity>
 </entity-mappings>
